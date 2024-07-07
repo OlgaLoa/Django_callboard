@@ -1,0 +1,43 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+{{ flatpage.title }}
+{% endblock title %}
+
+{% block content %}
+    <h2>{{ flatpage.title }}</h2>
+    <hr>
+    <h3>Сurrent announcements:</h3>
+{{ flatpage.content }}
+
+{% if posts %}
+
+    {% for one_post in posts %} <!-- данные из views -->
+<p>&nbsp;</p>
+<table style="height: 106px; margin-left: auto; margin-right: auto;" border="5" width="800"><caption>&nbsp;</caption>
+<tbody>
+<tr>
+<td style="width: 486px; text-align: left;">
+<pre><strong>{{ one_post.category}}</strong></pre>
+</td>
+</tr>
+<tr>
+<td style="width: 486px; text-align: left;">
+<h2><strong>{{ one_post.author }} : "{{ one_post.title }}"</strong></h2>
+</td>
+</tr>
+<tr>
+<td style="width: 486px; text-align: left;">
+<pre><strong>{{ one_post.text}}</strong></pre>
+</td>
+</tr>
+</tbody>
+</table>
+    {% endfor %}
+    </table> <!-- ... и таблицы -->
+{% else %}
+       <!-- Если новостей нет, то говорим, что новостей нет -->
+       <h2>No current announcements!</h2>
+{% endif %}
+
+{% endblock content %}

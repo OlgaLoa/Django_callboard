@@ -1,0 +1,35 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+
+{% block content %}
+<h1>Announcement by its id:</h1>
+<h3>{{ time_now|date:'M d Y' }}</h3>
+
+{% if post_detail %}
+
+<table style="width: 513px;">
+<tbody>
+<tr>
+<td style="width: 513px;">
+<pre>{{ post_detail.category}}</pre>
+</td>
+</tr>
+<tr>
+<td style="width: 513px;">
+<pre><strong>{{ post_detail.author }} : "{{ posts_detail.title }}</strong></pre>
+</td>
+</tr>
+<tr>
+<td style="width: 513px;">
+<pre>{{ post_detail.text}}</pre>
+</td>
+</tr>
+</tbody>
+</table>
+
+{% else %}
+       <!-- Если новостей нет, то говорим, что новостей нет -->
+       <h2>No current announcement!</h2>
+{% endif %}
+{% endblock content%}
